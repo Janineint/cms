@@ -24,6 +24,10 @@ public class OrdersController : ControllerBase
                       {
                           o.Id,
                           o.OrderDate,
+                          o.Quantity,
+                          o.TotalCost, 
+                          o.ProductId,
+                          ProductName = o.Product.Name, 
                           Products = o.ProductOrders.Select(po => new
                           {
                               po.ProductId,
@@ -44,6 +48,10 @@ public class OrdersController : ControllerBase
                      {
                          o.Id,
                          o.OrderDate,
+                         o.Quantity,
+                         o.TotalCost, 
+                         o.ProductId,
+                         ProductName = o.Product.Name, 
                          Products = o.ProductOrders.Select(po => new
                          {
                              po.ProductId,
@@ -79,6 +87,9 @@ public class OrdersController : ControllerBase
             return NotFound();
 
         order.OrderDate = updatedOrder.OrderDate;
+        order.Quantity = updatedOrder.Quantity;
+        order.TotalCost = updatedOrder.TotalCost; 
+        order.ProductId = updatedOrder.ProductId; 
 
         _context.SaveChanges();
 

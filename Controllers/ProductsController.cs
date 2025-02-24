@@ -24,6 +24,7 @@ public class ProductsController : ControllerBase
                         {
                             p.Id,
                             p.Name,
+                            p.Price, // Include Price field in response
                             SupplierName = p.Supplier.Name
                         }).ToList();
         return Ok(products);
@@ -39,6 +40,7 @@ public class ProductsController : ControllerBase
                        {
                            p.Id,
                            p.Name,
+                           p.Price, // Include Price field in response
                            SupplierName = p.Supplier.Name
                        }).FirstOrDefault();
 
@@ -70,6 +72,7 @@ public class ProductsController : ControllerBase
             return NotFound();
 
         product.Name = updatedProduct.Name;
+        product.Price = updatedProduct.Price; // Update Price field
         product.SupplierId = updatedProduct.SupplierId;
 
         _context.SaveChanges();

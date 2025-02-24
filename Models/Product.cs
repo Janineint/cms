@@ -4,6 +4,7 @@
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public float Price { get; set; } 
         public int SupplierId { get; set; }
         public Supplier Supplier { get; set; }
         public List<ProductOrder> ProductOrders { get; set; }
