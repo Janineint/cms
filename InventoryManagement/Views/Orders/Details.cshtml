@@ -1,0 +1,46 @@
+﻿@model Order
+@{
+    ViewData["Title"] = "Order Details";
+}
+
+<div class="container my-5 d-flex justify-content-center">
+    <div class="p-4 shadow rounded" style="background-color: #FBFBFD; width: 700px;">
+        <h2 class="text-center fw-bold mb-4">Order Details</h2>
+
+        <p class="text-center"><strong>Order ID:</strong> @Model.TransactionId</p>
+        <p class="text-center"><strong>Order Date:</strong> @Model.OrderDate.ToString("yyyy-MM-dd")</p>
+        <p class="text-center"><strong>Store Name:</strong> @Model.Store?.StoreName</p>
+        <p class="text-center"><strong>Total Price:</strong> $ @Model.TotalCost.ToString("N2")</p>
+
+        <h5 class="fw-bold text-primary mt-4 text-center">Order Items</h5>
+        <table class="table text-center">
+            <thead class="text-white" style="background-color: #007bff;">
+                <tr>
+                    <th class="text-white bg-primary">Order Item ID</th>
+                    <th class="text-white bg-primary">Menu Item</th>
+                    <th class="text-white bg-primary">Unit Price</th>
+                    <th class="text-white bg-primary">Quantity</th>
+                    <th class="text-white bg-primary">Total Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.OrderDetails)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Product?.ProductName</td>
+                        <td>$ @item.UnitPrice.ToString("N2")</td>
+                        <td>@item.Quantity</td>
+                        <td>$ @(item.UnitPrice * item.Quantity)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="text-end mt-3">
+            <a asp-action="Index" class="btn btn-secondary me-2">Back to List</a>
+            <a asp-action="Edit" asp-route-id="@Model.TransactionId" class="btn btn-warning text-dark me-2">Edit</a>
+            <a asp-action="Delete" asp-route-id="@Model.TransactionId" class="btn btn-danger">Delete</a>
+        </div>
+    </div>
+</div>
