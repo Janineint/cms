@@ -13,9 +13,9 @@
         <input type="hidden" name="id" value="@orderId" />
 
         <div class="mb-3">
-            <label class="form-label">Customer</label>
-            <select asp-for="StoreID" asp-items="@(new SelectList(ViewBag.CustomerId, "Value", "Text"))" class="form-select">
-                <option value="">-- Select Customer --</option>
+            <label class="form-label">Store</label>
+            <select asp-for="StoreID" asp-items="@(new SelectList(ViewBag.StoreID, "Value", "Text"))" class="form-select">
+                <option value="">-- Select Store --</option>
             </select>
         </div>
 
